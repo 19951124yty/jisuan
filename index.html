@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文本自动计算</title>
+</head>
+<body>
+    <h4 style="text-align: center;">文本自动统计工具</h4>
+    <!-- <input type="text" id="txt" style="width: 90%;height: 180px;"> -->
+    <textarea rows="2" cols="20" id="txt" style="width: 90%;height: 180px;"></textarea>
+    
+    <button id="sum">计算</button>
+    <button id="clear">清空</button>
+    计算结果<input type="text" id="resout">
+    
+</body>
+<script type="text/javascript">
+    var btn_clear=document.getElementById("clear");
+    btn_clear.onclick=function(){
+        document.getElementById("txt").value="";
+        document.getElementById("resout").value="";
+        
+    }
+</script>
+<script type="text/javascript">
+    var sum=document.getElementById("sum");
+    sum.onclick=function(){
+        var txt=document.getElementById("txt"); 
+        var resout=document.getElementById("resout");
+        // document.write(txt.value); 
+        // resout.value=txt.value;
+        txt_value=txt.value;
+        var txt_split=txt_value.split("\n");
+        var ii=0;
+        for(var sum_r=0;ii<txt_split.length;ii=ii+1){
+            var sum_ii=txt_split[ii];
+            if(txt_split[ii].split(" ").length==1){
+                var sum_ii=0;
+            }
+            else if(txt_split[ii].split(" ").length==2){
+                var sum_ii=Number(sum_ii.split(" ")[1]);
+            }
+            sum_r=sum_r+sum_ii;
+        }
+        resout.value=sum_r;
+    }
+
+</script>
+</html>
